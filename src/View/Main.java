@@ -40,6 +40,7 @@ public class Main {
 				break;
 			case 2:
 				cls();
+				
 				viewProduct();
 				break;
 			case 3:
