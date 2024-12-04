@@ -146,7 +146,7 @@ public class Main {
 						foundid = true;
 					}
 
-					if (!foundid) {
+					else if (!foundid) {
 						System.out.println("Product not found, try again.");
 					}
 				}
@@ -199,7 +199,7 @@ public class Main {
 
 						break;
 					}
-					if (!found) {
+					else if (!found) {
 						System.out.println("Product not found, try again.");
 					}
 				}
@@ -243,7 +243,7 @@ public class Main {
 				System.out.println("Invalid payment type!");
 				return;
 			}
-			finalPrice = cash.getPrice();
+			finalPrice = cash.getPrice() * quantity;
 
 			Order o = OrderFactory.createOrder(id, name, selectedProduct, quantity, paymentType, finalPrice);
 			db.addOrder(o);
