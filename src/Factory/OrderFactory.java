@@ -33,5 +33,14 @@ public class OrderFactory {
 		}
 	}
 	
+	public static Order executeOrder(String ID) {
+		for(int i = 0;i<db.getOrderList().size();i++) {
+			if(ID.equals(db.getOrderList().get(i).getId())) {
+				return db.getOrderList().get(i);
+			}
+		}
+		return null;	
+	}
+	
 	
 }

@@ -42,6 +42,11 @@ public class Connect {
 		System.out.println("Order Added!!");
 	}
 	
+	public void deleteOrder(Order o) {
+		orderList.remove(o);
+		System.out.println("Order Delete");
+	}
+	
 	public ArrayList<Order> getOrderList(){
 		return orderList;
 	}

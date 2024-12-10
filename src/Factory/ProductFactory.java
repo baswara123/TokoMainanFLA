@@ -45,7 +45,7 @@ public class ProductFactory {
 		}
 	}
 	
-	//update
+	//update stock
 	
 	public static void updateProduct(String id, int stock) {
 		for(Product p: db.getProductList()) {
@@ -59,8 +59,6 @@ public class ProductFactory {
 			}
 		}
 	}
-	
-	
 	
 	
 }

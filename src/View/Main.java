@@ -57,7 +57,8 @@ public class Main {
 			System.out.println("Order Managment");
 			System.out.println("1. Add Order");
 			System.out.println("2. View Order");
-			System.out.println("3. Back");
+			System.out.println("3. Execute order");
+			System.out.println("4. Back");
 			System.out.print(">>");
 			choose = scan.nextInt();
 			switch (choose) {
@@ -67,9 +68,14 @@ public class Main {
 			case 2:
 				viewOrder();
 				break;
+			case 3:
+				excuteOrder();
+				break;
 			}
-		} while (choose != 3);
+		} while (choose != 4);
 	}
+	
+	
 
 	public void addProduct() {
 		cls();
@@ -160,7 +166,7 @@ public class Main {
 			} while (stock <= 0);
 			
 			ProductFactory.updateProduct(id, stock);
-			System.out.println("PRoduct Updated");
+			System.out.println("Product Updated");
 			
 		}
 	}
@@ -256,6 +262,34 @@ public class Main {
 
 	public void viewOrder() {
 		OrderFactory.viewOrder();
+	}
+	
+	public void excuteOrder() {
+		if(db.getOrderList().isEmpty()) {
+			cls();
+			System.out.println("Cannot Make Order There no Product Here");
+			System.out.println();
+		}else {
+			boolean foundid = false;
+			String id;
+			do {
+				System.out.print("Enter Product ID: ");
+				id = scan.next();
+
+				for (int i = 0; i < db.getOrderList().size(); i++) {
+					if (id.equals(db.getOrderList().get(i).getId())) {
+						foundid = true;
+					}
+					else if (!foundid) {
+						System.out.println("Order not found, try again.");
+					}
+				}
+			} while (!foundid);
+			
+			Order o = OrderFactory.executeOrder(id);
+			db.deleteOrder(o);
+			
+		}
 	}
 
 	public Main() {
